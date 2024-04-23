@@ -42,7 +42,10 @@ public class Arrays {
             count --;
         }
 
+    }
 
+    public int indexOf(int item){
+        return -1 ;
     }
 
 

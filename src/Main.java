@@ -1,4 +1,5 @@
 import DataStructures.Arrays;
+import DataStructures.ArraysTwo;
 
 import java.text.NumberFormat;
 import java.util.Scanner;
@@ -14,14 +15,14 @@ public class Main {
 //       FizzBuzz
 //       fizzBuzzCalc();
 
-        Arrays numbers = new Arrays(2);
+        ArraysTwo numbers = new ArraysTwo(3);
         numbers.insert(2);
         numbers.insert(3);
         numbers.insert(4);
         numbers.insert(5);
         numbers.insert(6);
         numbers.insert(7);
-        numbers.removeAt(2);
+        numbers.removeAt(1);
         numbers.print();
     }
 

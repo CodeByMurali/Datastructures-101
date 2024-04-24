@@ -15,14 +15,19 @@ public class Main {
 //       fizzBuzzCalc();
 
         Array numbers = new Array(3);
-        numbers.insert(2);
-        numbers.insert(3);
-        numbers.insert(4);
-        numbers.insert(5);
-        numbers.insert(6);
-        numbers.insert(7);
-        numbers.removeAt(1);
-        numbers.print();
+        numbers.insert(20);
+        numbers.insert(30);
+        numbers.insert(40);
+//        numbers.insert(50);
+//        numbers.insert(60);
+//        numbers.insert(70);
+//        numbers.removeAt(1);
+//        System.out.println(numbers.indexOf(50));
+//        System.out.println(numbers.max());
+//        int[] inputArray = {10, 20, 30};
+//        numbers.intersection(inputArray);
+        numbers.insertAt(55, 1);
+//        numbers.print();
     }
 
 

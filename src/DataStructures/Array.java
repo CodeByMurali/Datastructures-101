@@ -55,33 +55,27 @@ public class Array {
         items = newItems;
     }
 
-    public int max() {
-        // O(n): Because we have to iterate over
-        // the entire array to find the largest
-        // number. This number may be at the end
-        // of the array (worst case scenario).
-        int max = 0;
-        for (int item : items)
-            if (item > max)
-                max = item;
-
-        return max;
-    }
 
     public Array intersect(Array other) {
         var intersection = new Array(count);
 
         for (int item : items)
+            // if the element is not found this method will return -1
             if (other.indexOf(item) >= 0)
                 intersection.insert(item);
 
         return intersection;
     }
 
+
     public void removeAt(int index) {
         if (index < 0 || index >= count)
             throw new IllegalArgumentException();
 
+        //Shift the items to the left to fill the hole
+        //index: 1
+        //1 <- 2
+        //2 -< 3
         for (int i = index; i < count - 1; i++)
             items[i] = items[i + 1];
 
@@ -99,6 +93,27 @@ public class Array {
     public void print() {
         for (int i = 0; i < count; i++)
             System.out.println(items[i]);
+    }
+
+    //Complexity O(N)
+    public int max(){
+        int maxNum = 0;
+        for (int i = 0; i < count; i++) {
+            if(items[i] > maxNum){
+             maxNum = items[i];
+            }
+        }
+        return maxNum;
+    }
+
+    public void intersection(int [] inputArray){
+        for (int i = 0; i < count; i++) {
+            for (int j = 0; j < inputArray.length; j++) {
+                if(inputArray[j] == items[i]){
+                    System.out.println(inputArray[j]);
+                }
+            }
+        }
     }
 }
 

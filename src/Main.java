@@ -1,5 +1,6 @@
 import DataStructures.Array;
 import DataStructures.LinkedList.LinkedList;
+import DataStructures.LinkedList.LinkedListTwo;
 
 import java.text.NumberFormat;
 import java.util.Arrays;
@@ -31,18 +32,19 @@ public class Main {
 //        numbers.insertAt(55, 1);
 //        numbers.print();
 
-        LinkedList list = new LinkedList();
+        LinkedListTwo list = new LinkedListTwo();
         list.addLast(1);
         list.addLast(2);
         list.addLast(3);
-        list.addLast(4);
+//        list.addLast(4);
         list.addFirst(0);
-//        list.removeFirst();
-//        list.removeLast();
+        System.out.println(list.indexOf(3));
+        list.removeFirst();
+        list.removeLast();
 //        System.out.println(list.indexOf(20));
 //        System.out.println(list.contains(20));
 //        System.out.println(list.size());
-        System.out.println(Arrays.toString(list.toArray()));
+//        System.out.println(Arrays.toString(list.toArray()));
     }
 
 

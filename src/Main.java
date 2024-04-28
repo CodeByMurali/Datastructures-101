@@ -1,6 +1,8 @@
 import DataStructures.Array;
+import DataStructures.LinkedList.LinkedList;
 
 import java.text.NumberFormat;
+import java.util.Arrays;
 import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -14,10 +16,10 @@ public class Main {
 //       FizzBuzz
 //       fizzBuzzCalc();
 
-        Array numbers = new Array(3);
-        numbers.insert(20);
-        numbers.insert(30);
-        numbers.insert(40);
+//        Array numbers = new Array(3);
+//        numbers.insert(20);
+//        numbers.insert(30);
+//        numbers.insert(40);
 //        numbers.insert(50);
 //        numbers.insert(60);
 //        numbers.insert(70);
@@ -26,8 +28,21 @@ public class Main {
 //        System.out.println(numbers.max());
 //        int[] inputArray = {10, 20, 30};
 //        numbers.intersection(inputArray);
-        numbers.insertAt(55, 1);
+//        numbers.insertAt(55, 1);
 //        numbers.print();
+
+        LinkedList list = new LinkedList();
+        list.addLast(1);
+        list.addLast(2);
+        list.addLast(3);
+        list.addLast(4);
+        list.addFirst(0);
+//        list.removeFirst();
+//        list.removeLast();
+//        System.out.println(list.indexOf(20));
+//        System.out.println(list.contains(20));
+//        System.out.println(list.size());
+        System.out.println(Arrays.toString(list.toArray()));
     }
 
 

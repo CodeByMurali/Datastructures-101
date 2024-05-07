@@ -1,10 +1,4 @@
-import DataStructures.Array;
-import DataStructures.LinkedList.LinkedList;
-import DataStructures.LinkedList.LinkedListTwo;
-
-import java.text.NumberFormat;
-import java.util.Arrays;
-import java.util.Scanner;
+import DataStructures.Arrays.ArraysPractice;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -17,13 +11,21 @@ public class Main {
 //       FizzBuzz
 //       fizzBuzzCalc();
 
-//        Array numbers = new Array(3);
-//        numbers.insert(20);
-//        numbers.insert(30);
-//        numbers.insert(40);
-//        numbers.insert(50);
-//        numbers.insert(60);
-//        numbers.insert(70);
+        //Arrays
+        ArraysPractice numbers = new ArraysPractice(3);
+        numbers.insert(20);
+        numbers.insert(30);
+        numbers.insert(40);
+        numbers.insert(50);
+        numbers.insert(60);
+        numbers.insert(70);
+        numbers.insert(80);
+        numbers.insertAt(0, 0);
+//        numbers.removeAt(2);
+//        numbers.removeAt(3);
+//        System.out.println(numbers.indexOf(50));
+        numbers.print();
+
 //        numbers.removeAt(1);
 //        System.out.println(numbers.indexOf(50));
 //        System.out.println(numbers.max());
@@ -32,121 +34,29 @@ public class Main {
 //        numbers.insertAt(55, 1);
 //        numbers.print();
 
-        LinkedListTwo list = new LinkedListTwo();
-        list.addLast(1);
-        list.addLast(2);
-        list.addLast(3);
+        //LinkedList
+//        LinkedListTwo list = new LinkedListTwo();
+//        list.addLast(1);
+//        list.addLast(2);
+//        list.addLast(3);
 //        list.addLast(4);
-        list.addFirst(0);
-        System.out.println(list.indexOf(3));
-        list.removeFirst();
-        list.removeLast();
+//        list.addFirst(0);
+//        System.out.println(list.indexOf(3));
+//        list.removeFirst();
+//        list.removeLast();
 //        System.out.println(list.indexOf(20));
 //        System.out.println(list.contains(20));
 //        System.out.println(list.size());
 //        System.out.println(Arrays.toString(list.toArray()));
+
+
+        //Doubly LinkedList
+//        DoublyLinkedList dlist = new DoublyLinkedList();
+//        dlist.addLast(10);
+//        dlist.addLast(20);
+//        dlist.addFirst(0);
+//        dlist.reverse();
     }
-
-
-    public static void calculateMortgage(){
-
-        final byte months = 12;
-        final byte percent = 100;
-
-//        Mortgage calculator
-
-        int principal = (int) getValidNumber("principal", 1000, 1000000);
-        float annualInterestRate = getValidNumber("annualInterestRate", 0,30);
-        byte periodInYears = (byte) getValidNumber("Period (Years)", 1,30);
-
-        double interestRatePerMonth = (annualInterestRate/months/percent);
-
-        //Period in months
-        byte numberOfMonths = (byte) (periodInYears*months);
-
-        double numerator = (Math.pow((1 + interestRatePerMonth), numberOfMonths))*interestRatePerMonth;
-
-        double denominator = (Math.pow((1+interestRatePerMonth), numberOfMonths))-1;
-
-        //Mortgage calculation
-        double mortgagePerMonth =  (numerator/denominator)*principal;
-
-        System.out.println("MORTGAGE");
-        System.out.println("------");
-        System.out.println("Monthly payments: " + NumberFormat.getCurrencyInstance().format(mortgagePerMonth));
-        System.out.println();
-
-        //PaymentSchedule
-        printPaymentSchedule(principal, interestRatePerMonth, numberOfMonths);
-
-    }
-
-    public static void printPaymentSchedule( int principal,  double interestRatePerMonth, byte numberOfMonths){
-        double paymentScheduleAmt = 0;
-
-        System.out.println("PAYMENT SCHEDULE");
-        System.out.println("------");
-        int numberOfPaymentsMade = 0;
-
-        while (numberOfMonths != 0){
-            double numerator = ((Math.pow((1 + interestRatePerMonth), numberOfMonths)) - (Math.pow((1 + interestRatePerMonth), numberOfPaymentsMade))) * principal;
-            double denominator = (Math.pow((1 + interestRatePerMonth), numberOfMonths)) - 1;
-            paymentScheduleAmt = numerator/denominator;
-            System.out.println(NumberFormat.getCurrencyInstance().format(paymentScheduleAmt));
-            numberOfMonths --;
-        }
-    }
-
-    public static float getValidNumber(String entity, int lowerLimit, int upperLimit){
-
-        Scanner scanner = new Scanner(System.in);
-        float entityValue;
-
-        while (true){
-            System.out.print(entity + " : ");
-            entityValue = scanner.nextFloat();
-            if(!(entityValue >= lowerLimit && entityValue <= upperLimit)) {
-                System.out.println("invalid input - Enter a number between " + lowerLimit + " and " + upperLimit);
-                System.out.print(entity + " : ");
-                entityValue = scanner.nextInt();
-            }
-            break;
-        }
-
-        return entityValue;
-    }
-
-
-
-
-
-//   Fizz Buzz
-    public static void fizzBuzzCalc(){
-
-        //Divisible by 5 - Print Fizz
-        //Divisible by 3 - Print Buzz
-        //Number divisible by both 5 and 3 - Print FizzBuzz
-        //Number not divisible by both 5 and 3 - Print the same number on terminal
-
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Number: ");
-        int inputNumber = Integer.parseInt(scanner.nextLine());
-        String output = "";
-        boolean divisibleByFive = ((inputNumber % 5) == 0);
-        boolean divisibleByThree = ((inputNumber % 3) == 0);
-        boolean divisibleByThreeAndFive = (((inputNumber % 3) == 0) && ((inputNumber % 5) == 0));
-        if(divisibleByThreeAndFive)
-            output = "FizzBuzz";
-        else if (divisibleByFive)
-            output = "Fizz";
-        else if (divisibleByThree)
-            output = "Buzz";
-        else
-            output = Integer.toString(inputNumber);
-        System.out.print(output);
-    }
-
 
 
 }

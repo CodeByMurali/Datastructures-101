@@ -75,9 +75,43 @@ public class ArraysPractice {
     }
 
     //Intersect
-    //RemoveAt
+    public Array intersect(Array other) {
+        var intersection = new Array(count);
+
+        for (int item : items)
+            // if the element is not found this method will return -1
+            if (other.indexOf(item) >= 0)
+                intersection.insert(item);
+
+        return intersection;
+    }
+
+
+
+
     //Reverse
+    public void reverse(){
+
+        int[] newItems = new int[count];
+
+        for (int i = 0; i < count; i++)
+            newItems[i] = items[count - i - 1];
+
+        items = newItems;
+    }
+
+
+
     //Max
+    public int max(){
+        int max = 0;
+        for (int i = 0; i < count; i++){
+            if(items[i] > max){
+                max = items[i];
+            }
+        }
+        return max;
+    }
 
 
     public void print(){

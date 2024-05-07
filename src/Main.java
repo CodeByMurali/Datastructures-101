@@ -21,10 +21,12 @@ public class Main {
         numbers.insert(70);
         numbers.insert(80);
         numbers.insertAt(0, 0);
+        numbers.reverse();
+        System.out.println(numbers.max());
 //        numbers.removeAt(2);
 //        numbers.removeAt(3);
 //        System.out.println(numbers.indexOf(50));
-        numbers.print();
+//        numbers.print();
 
 //        numbers.removeAt(1);
 //        System.out.println(numbers.indexOf(50));

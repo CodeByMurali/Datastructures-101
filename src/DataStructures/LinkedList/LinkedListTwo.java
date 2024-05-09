@@ -3,6 +3,7 @@ package DataStructures.LinkedList;
 
 import org.w3c.dom.Node;
 
+import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 public class LinkedListTwo {
@@ -218,19 +219,20 @@ public class LinkedListTwo {
         Node ptrOne = first;
        Node lastNode = last;
        int distanceBetweenPointers = k - 1;
-       Node ptrTwo = getNodeByPosition(ptrOne, distanceBetweenPointers);
+       Node ptrTwo = movePointerByCount(ptrOne, distanceBetweenPointers);
 
        while (ptrTwo != lastNode){
             ptrOne = ptrTwo;
-            ptrTwo = getNodeByPosition(ptrOne, distanceBetweenPointers);
+            ptrTwo = movePointerByCount(ptrOne, distanceBetweenPointers);
        }
        return ptrOne.value;
     }
 
-    private Node getNodeByPosition(Node firstPointer, int index){
+    private Node movePointerByCount(Node firstPointer, int count){
         var currentNode = firstPointer;
-        for (int i = 1; i <= index; i++) {
-            currentNode = currentNode.next;
+        for (int i = 1; i <= count; i++) {
+            if (currentNode.next != null)
+                currentNode = currentNode.next;
         }
         return currentNode;
     }
@@ -258,4 +260,90 @@ public class LinkedListTwo {
         return a.value;
     }
 
+//Find the middle of a linked list in one pass.
+// If the list has an even number of nodes, there would be two middle nodes.
+// (Note: Assume that you don’t know the size of the list ahead of time.)
+
+    public int[] printMiddleElement(){
+
+        var slowPointer = first;
+        var fastPointer = first;
+        var middle = first;
+
+
+        // Odd
+        while (fastPointer != last){
+            slowPointer = movePointerByCount(slowPointer, 1);
+            fastPointer = movePointerByCount(fastPointer, 2);
+            middle = slowPointer;
+        }
+
+        //Even number of element in the list
+            if (fastPointer.next == null){
+                return new int[]{middle.value, middle.next.value};
+            }
+        return new int[]{middle.value};
+    }
+
+    //Mosch sol
+
+    public void printMiddle(){
+        var slowPointer = first;
+        var fastPointer = first;
+
+        // Even
+        while (fastPointer != last && fastPointer.next != last) {
+            fastPointer = fastPointer.next.next;
+            slowPointer = slowPointer.next;
+        }
+        // Odd
+        if (fastPointer == last)
+            System.out.println(slowPointer.value);
+        else
+            System.out.println(slowPointer.value + ", " + slowPointer.next.value);
+
+    }
+
+
+    //Check to see if a linked list has a loop.Hint: use two pointers (slow and fast) to traverse the list.
+    // Move the slow pointer one step forward and the fast pointer two steps forward.
+    // If there’s a loop, at some point, the fast pointer will meet the slow pointer and overtake it.
+    // This algorithm is called Floyd’s Cycle-finding Algorithm.Solution: LinkedList.hasLoop()
+
+    public boolean hasLoop() {
+        var slow = first;
+        var fast = first;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+
+            if (slow == fast)
+                return true;
+        }
+
+        return false;
+    }
+
+    public static LinkedListTwo createWithLoop() {
+        var list = new LinkedListTwo();
+        list.addLast(10);
+        list.addLast(20);
+        list.addLast(30);
+
+        // Get a reference to 30
+        var node = list.last;
+
+        list.addLast(40);
+        list.addLast(50);
+
+        // Create the loop
+        list.last.next = node;
+
+        return list;
+    }
+
 }
+
+
+

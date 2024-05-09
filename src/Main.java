@@ -45,8 +45,11 @@ public class Main {
         list.addLast(30);
         list.addLast(40);
         list.addLast(50);
+        list.addLast(60);
+//        list.addLast(70);
 //        list.reverse();
-        System.out.println(list.getKthNodeFromTheEnd(0));
+//        System.out.println(list.getKthNodeFromTheEnd(0));
+        list.printMiddle();
 //        list.addLast(4);
 //        list.addLast(5);
 //        list.addLast(6);

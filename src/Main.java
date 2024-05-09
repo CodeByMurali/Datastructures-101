@@ -43,7 +43,10 @@ public class Main {
         list.addLast(10);
         list.addLast(20);
         list.addLast(30);
-        list.reverse();
+        list.addLast(40);
+        list.addLast(50);
+//        list.reverse();
+        System.out.println(list.getKthNodeFromTheEnd(0));
 //        list.addLast(4);
 //        list.addLast(5);
 //        list.addLast(6);
@@ -52,8 +55,8 @@ public class Main {
 //        list.removeFirst();
 //        System.out.println(list.size());
 
-        var array = list.toArray();
-        System.out.println(Arrays.toString(array));
+//        var array = list.toArray();
+//        System.out.println(Arrays.toString(array));
 //        list.removeLast();
 //        System.out.println(list.indexOf(20));
 //        System.out.println(list.contains(20));

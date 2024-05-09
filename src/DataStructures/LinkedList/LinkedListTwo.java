@@ -196,4 +196,66 @@ public class LinkedListTwo {
     }
 
 
+    // Find the Kth node from the end
+    // Of a linked list in one pass.
+
+    // [10 -> 20 -> 30 -> 40 -> 50 ]
+    //  *           *
+    // K = 1 (50)
+    // K = 2 (40)
+    // K = 3 (30) (distance = 2) or d = k-1 nodes
+
+    // Using the first pointer as the second pointer reaches the end
+    // Of the list, the pointer can be found
+    public int findKthNodeFromLast(int k){
+
+       if(k <= 0 || k > count ){
+           throw new IllegalArgumentException();
+       } else if (k == 1) {
+           return last.value;
+       }
+
+        Node ptrOne = first;
+       Node lastNode = last;
+       int distanceBetweenPointers = k - 1;
+       Node ptrTwo = getNodeByPosition(ptrOne, distanceBetweenPointers);
+
+       while (ptrTwo != lastNode){
+            ptrOne = ptrTwo;
+            ptrTwo = getNodeByPosition(ptrOne, distanceBetweenPointers);
+       }
+       return ptrOne.value;
+    }
+
+    private Node getNodeByPosition(Node firstPointer, int index){
+        var currentNode = firstPointer;
+        for (int i = 1; i <= index; i++) {
+            currentNode = currentNode.next;
+        }
+        return currentNode;
+    }
+
+    //Mosch solution
+
+    public int getKthNodeFromTheEnd(int k){
+        if(k <= 0){
+            throw new IllegalArgumentException();
+        }
+        var a = first;
+        var b = first;
+
+        for (int i = 0; i < k - 1; i++) {
+            b = b.next;
+            if(b.next == null){
+                throw new IllegalArgumentException();
+            }
+        }
+
+        while (b != last){
+            a = a.next;
+            b = b.next;
+        }
+        return a.value;
+    }
+
 }
